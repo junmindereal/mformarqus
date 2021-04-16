@@ -1,31 +1,10 @@
 import Head from 'next/head'
-import { GraphQLClient, gql } from 'graphql-request'
+import Link from 'next/link'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { getBlogPosts } from '@/lib/queries'
 
 export async function getStaticProps () {
-  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`
-
-  const graphQLClient = new GraphQLClient(endpoint, {
-    headers: {
-      authorization: `Bearer ${process.env.ACCESS_TOKEN}`
-    }
-  })
-
-  const postsQuery = gql`
-    {
-      blogPostCollection {
-        items {
-          title
-          excerpt {
-            json
-          }
-          slug
-        }
-      }
-    }
-  `
-
-  const { blogPostCollection } = await graphQLClient.request(postsQuery)
+  const { blogPostCollection } = await getBlogPosts()
 
   return {
     props: { posts: blogPostCollection.items }
@@ -43,7 +22,9 @@ export default function Home ({ posts }) {
       <ol>
         {posts.map(post => (
           <li key={post.slug}>
-            <h1>{post.title}</h1>
+            <Link href={`/blog/${post.slug}`}>
+              <a><h2>{post.title}</h2></a>
+            </Link>
             <div>{documentToReactComponents(post.excerpt.json)}</div>
           </li>
         ))}
