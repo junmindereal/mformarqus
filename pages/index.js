@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { GraphQLClient, gql } from 'graphql-request'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 export async function getStaticProps () {
   const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`
@@ -15,22 +16,23 @@ export async function getStaticProps () {
       blogPostCollection {
         items {
           title
+          excerpt {
+            json
+          }
           slug
         }
       }
     }
   `
 
-  const posts = await graphQLClient.request(postsQuery)
+  const { blogPostCollection } = await graphQLClient.request(postsQuery)
 
   return {
-    props: { posts }
+    props: { posts: blogPostCollection.items }
   }
 }
 
 export default function Home ({ posts }) {
-  console.log(posts)
-
   return (
     <>
       <Head>
@@ -38,6 +40,14 @@ export default function Home ({ posts }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <h1 className='text-5xl'>Hello World</h1>
+      <ol>
+        {posts.map(post => (
+          <li key={post.slug}>
+            <h1>{post.title}</h1>
+            <div>{documentToReactComponents(post.excerpt.json)}</div>
+          </li>
+        ))}
+      </ol>
     </>
   )
 }
