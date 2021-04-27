@@ -1,5 +1,5 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { getBlogPosts, getBlogPost } from '@/lib/queries'
+import { getBlogPosts, getBlogPost } from '@/utils/queries'
 
 export async function getStaticPaths () {
   const { blogPostCollection } = await getBlogPosts()
@@ -30,7 +30,7 @@ export default function BlogPost ({ post }) {
   return (
     <>
       <h1 className='text-5xl'>{post.title}</h1>
-      <div>{documentToReactComponents(post.body.json)}</div>
+      <div>{documentToReactComponents(post.content.json)}</div>
     </>
   )
 }

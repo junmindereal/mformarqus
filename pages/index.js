@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Card from '@/components/Card'
-import { getBlogPosts } from '@/lib/queries'
+import { getBlogPosts } from '@/utils/queries'
 
 export async function getStaticProps () {
   const { blogPostCollection } = await getBlogPosts()

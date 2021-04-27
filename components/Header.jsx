@@ -5,19 +5,19 @@ export default function Header ({ children }) {
     <header className='flex items-center justify-between mt-4 mb-8'>
       <Link href='/'>
         <a className='flex items-center'>
-          <svg className='w-10 h-full' viewBox='0 0 123 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M0.948154 80H29.1754V34.1818C29.1754 27.3295 32.755 23.1364 38.5845 23.1364C44.4141 23.1364 48.1982 27.3295 48.1982 34.1818V80H75.1982V34.1818C75.1982 27.3295 78.7777 23.1364 84.6072 23.1364C90.4368 23.1364 94.2209 27.3295 94.2209 34.1818V80H122.448V27.0227C122.448 10.9148 112.119 0.431819 97.0845 0.431819C85.4254 0.431819 76.0163 6.77272 73.3572 16.3864H72.5391C70.9027 6.77272 62.1072 0.431819 51.0618 0.431819C40.1697 0.431819 31.8345 6.56818 28.5618 16.3864H27.7436V1.45454H0.948154V80Z' fill='url(#paint0_linear)' />
+          <svg className='w-10 h-full' viewBox='0 0 160 105' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M0 105H37.1717V44.5373C37.1717 35.4949 41.8855 29.9614 49.5623 29.9614C57.2391 29.9614 62.2222 35.4949 62.2222 44.5373V105H97.7778V44.5373C97.7778 35.4949 102.492 29.9614 110.168 29.9614C117.845 29.9614 122.828 35.4949 122.828 44.5373V105H160V35.09C160 13.8335 146.397 0 126.599 0C111.246 0 98.8552 8.3676 95.3535 21.054H94.2761C92.1212 8.3676 80.5387 0 65.9933 0C51.6498 0 40.6734 8.09768 36.3636 21.054H35.2862V1.34961H0V105Z' fill='url(#paint0_linear)' />
             <defs>
-              <linearGradient id='paint0_linear' x1='2' y1='2' x2='124' y2='87.5' gradientUnits='userSpaceOnUse'>
-                <stop stopColor='#0284C7' />
-                <stop offset='0.987579' stopColor='#0D9488' />
+              <linearGradient id='paint0_linear' x1='1.38503' y1='2.0694' x2='162.264' y2='114.582' gradientUnits='userSpaceOnUse'>
+                <stop stopColor='#FB923C' />
+                <stop offset='0.987579' stopColor='#DB2777' />
               </linearGradient>
             </defs>
           </svg>
         </a>
       </Link>
       <Link href='/'>
-        <a className='text-lg font-medium text-gray-600 xl:hover:text-gray-900'>About</a>
+        <a className='text-lg font-medium'>About</a>
       </Link>
     </header>
   )

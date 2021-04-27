@@ -1,32 +1,44 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-
-function handleBackgroundColor (index) {
-  let bg = ''
-
-  switch (true) {
-    case ((index + 1) % 2 === 0):
-      bg = 'from-orange-400 to-pink-600'
-      break
-    default:
-      bg = 'from-cyan-400 to-blue-600'
-  }
-
-  return bg
-}
+import { getFirstLetter } from '@/utils/helper'
 
 export default function Card ({ posts }) {
   return (
-    <ol className='grid grid-cols-1 gap-4'>
+    <ol className='grid grid-cols-1 gap-10 md:gap-4 lg:gap-8 md:grid-cols-2 xl:grid-cols-3 '>
       {posts.map((post, index) => (
-        <li
-          key={post.slug}
-          className={`flex flex-col justify-center items-center min-h-[343px] px-6 py-8 rounded-xl bg-gradient-to-br ${handleBackgroundColor(index)}`}
-        >
-          <Link href={`/blog/${post.slug}`}>
-            <a className='inline-block mb-4 text-4xl font-bold text-white'><h2>{post.title}</h2></a>
-          </Link>
-          <div className='text-base leading-tight text-white'>{documentToReactComponents(post.excerpt.json)}</div>
+        <li key={post.slug}>
+          <div>
+            <Link href={`/blog/${post.slug}`}>
+              <a className='relative flex flex-col items-start justify-center p-6 bg-gray-900 rounded-2xl'>
+                <div className='flex items-end'>
+                  <span className='relative text-5xl font-bold lg:text-6xl'>
+                    <span>{getFirstLetter(post.thumbnail.title)}</span>
+                    <span>{getFirstLetter(post.thumbnail.title).toLowerCase()}</span>
+                  </span>
+                </div>
+                <div className='mx-auto w-52'>
+                  <Image
+                    src={post.thumbnail.url}
+                    width={post.thumbnail.width}
+                    height={post.thumbnail.height}
+                    className='w-full h-full'
+                  />
+                </div>
+                <div className='block w-full text-5xl font-bold text-center lg:text-6xl'>{post.thumbnail.title}</div>
+              </a>
+            </Link>
+          </div>
+          <div className='mt-4'>
+            <Link href={`/blog/${post.slug}`}>
+              <a className='inline-block'>
+                <h2 className='inline-block text-3xl font-bold leading-tight'>{post.title}</h2>
+              </a>
+            </Link>
+            <div className='mt-2 text-sm'>
+              {documentToReactComponents(post.excerpt.json)}
+            </div>
+          </div>
         </li>
       ))}
     </ol>
