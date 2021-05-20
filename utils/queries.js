@@ -14,6 +14,13 @@ export async function getBlogPost (slug) {
       blogPostCollection(where: {slug: $slug}) {
         items {
           title
+          thumbnail {
+            url
+            width
+            height
+            title
+            description
+          }
           content {
             json
           }
