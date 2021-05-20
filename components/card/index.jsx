@@ -2,40 +2,55 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getFirstLetter } from '@/utils/helper'
+import { styles } from './styles'
 
 export default function Card ({ posts }) {
+  const {
+    orderedList,
+    cardLink,
+    letterContainer,
+    firstLetter,
+    imageContainer,
+    image,
+    imageTitle,
+    descriptionContainer,
+    blogTitleLink,
+    blogTitle,
+    excerpt
+  } = styles
+
   return (
-    <ol className='grid grid-cols-1 gap-10 md:gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3 '>
+    <ol className={orderedList}>
       {posts.map((post, index) => (
         <li key={post.slug}>
           <div>
             <Link href={`/blog/${post.slug}`}>
-              <a className='relative flex flex-col items-start justify-center p-6 bg-gray-100 dark:shadow-none dark:bg-gray-900 rounded-2xl hover:bg-gradient-to-br hover:from-orange-400 hover:to-pink-600'>
-                <div className='flex items-end'>
-                  <span className='relative text-4xl font-semibold'>
+              <a className={cardLink}>
+                <div className={letterContainer}>
+                  <span className={firstLetter}>
                     <span>{getFirstLetter(post.thumbnail.title)}</span>
                     <span>{getFirstLetter(post.thumbnail.title).toLowerCase()}</span>
                   </span>
                 </div>
-                <div className='mx-auto w-52'>
+                <div className={imageContainer}>
                   <Image
                     src={post.thumbnail.url}
                     width={post.thumbnail.width}
                     height={post.thumbnail.height}
-                    className='w-full h-full'
+                    className={image}
                   />
                 </div>
-                <div className='block w-full text-4xl font-semibold text-center'>{post.thumbnail.title}</div>
+                <div className={imageTitle}>{post.thumbnail.title}</div>
               </a>
             </Link>
           </div>
-          <div className='mt-4'>
+          <div className={descriptionContainer}>
             <Link href={`/blog/${post.slug}`}>
-              <a className='inline-block'>
-                <h2 className='inline-block text-2xl font-semibold leading-tight hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-orange-400 hover:to-pink-600'>{post.title}</h2>
+              <a className={blogTitleLink}>
+                <h2 className={blogTitle}>{post.title}</h2>
               </a>
             </Link>
-            <div className='mt-2 text-sm text-gray-600 dark:text-gray-400'>
+            <div className={excerpt}>
               {documentToReactComponents(post.excerpt.json)}
             </div>
           </div>

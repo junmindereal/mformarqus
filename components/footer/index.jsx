@@ -1,7 +1,15 @@
 import { React, useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import { styles } from './styles'
 
 export default function Footer () {
+  const {
+    footer,
+    copyright,
+    copyrightPrefix,
+    copyrightLink
+  } = styles
+
   const link = 'https://junmin.dev/'
 
   const { theme, setTheme } = useTheme()
@@ -21,10 +29,17 @@ export default function Footer () {
   if (!isMounted) return null
 
   return (
-    <footer className='flex items-center justify-between mt-16 mb-6 text-sm xl:mt-24 xl:mb-12'>
-      <div className='flex items-center'>
-        <span className='mr-1 text-gray-500'>Made by</span>
-        <a className='text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:lg:hover:text-gray-50' href={link} rel='noreferrer' target='_blank'>Junmin De Real</a>
+    <footer className={footer}>
+      <div className={copyright}>
+        <span className={copyrightPrefix}>Made by</span>
+        <a
+          className={copyrightLink}
+          href={link}
+          rel='noreferrer'
+          target='_blank'
+        >
+          Junmin De Real
+        </a>
       </div>
       {theme === 'light'
         ? (

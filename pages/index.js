@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Card from '@/components/Card'
+import Card from '@/components/card/index'
 import { getBlogPosts } from '@/utils/queries'
 
 export async function getStaticProps () {

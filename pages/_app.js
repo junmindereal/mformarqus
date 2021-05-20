@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css'
 import { ThemeProvider } from 'next-themes'
-import Layout from '@/components/Layout'
+import Layout from '@/components/Layout/index'
 
 function MyApp ({ Component, pageProps }) {
   return (
