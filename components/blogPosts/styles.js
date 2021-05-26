@@ -9,19 +9,7 @@ export const styles = {
     xl:grid-cols-3
   `,
   cardLink: `
-    relative
-    flex
-    flex-col
-    items-start
-    justify-center
-    p-6
-    bg-gray-100
-    dark:shadow-none
-    dark:bg-gray-900
-    rounded-2xl
-    hover:bg-gradient-to-br
-    hover:from-orange-400
-    hover:to-pink-600
+    block
   `,
   letterContainer: `
     flex
