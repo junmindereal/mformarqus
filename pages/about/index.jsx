@@ -1,4 +1,5 @@
 import { getAbout } from '@/utils/queries'
+import AboutDetail from '@/components/aboutDetail/index'
 
 export async function getStaticProps () {
   const { aboutCollection } = await getAbout()
@@ -10,6 +11,6 @@ export async function getStaticProps () {
 
 export default function About ({ about }) {
   return (
-    <h1>{about.title}</h1>
+    <AboutDetail about={about} />
   )
 }

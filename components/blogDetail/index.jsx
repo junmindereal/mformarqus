@@ -8,9 +8,10 @@ const publishedDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
 export default function BlogDetail ({ post }) {
   const {
     article,
-    content,
     time,
-    title
+    title,
+    content,
+    aside
   } = styles
 
   return (
@@ -23,9 +24,9 @@ export default function BlogDetail ({ post }) {
           <h1 className={title}>{post.title}</h1>
           <div>{documentToReactComponents(post.content.json)}</div>
         </section>
-        <section>
+        <aside className={aside}>
           <Card data={post} />
-        </section>
+        </aside>
       </article>
     </>
   )

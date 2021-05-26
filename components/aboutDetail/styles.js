@@ -25,5 +25,6 @@ export const styles = {
   `,
   aside: `
     mt-12
+    lg:mt-0
   `
 }
