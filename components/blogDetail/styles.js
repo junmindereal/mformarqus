@@ -11,6 +11,11 @@ export const styles = {
     xl:col-span-2
     dark:prose-dark
   `,
+  time: `
+    text-sm
+    text-gray-500
+    dark:text-gray-400
+  `,
   title: `
     bg-clip-text
     bg-gradient-to-r

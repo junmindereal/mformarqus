@@ -49,7 +49,7 @@ export default function Header ({ children }) {
           </Link>
           )}
       <nav className={nav}>
-        <Link href='/'>
+        <Link href='/about'>
           <a className={navLink}>About</a>
         </Link>
       </nav>

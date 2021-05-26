@@ -12,7 +12,7 @@ export default function Footer () {
     btnLight
   } = styles
 
-  const link = 'https://junmin.dev/'
+  const link = 'https://timeline.junmin.dev/'
 
   const { theme, setTheme } = useTheme()
 

@@ -25,6 +25,7 @@ export async function getBlogPost (slug) {
             json
           }
           slug
+          publishedDate
         }
       }
     }
@@ -49,6 +50,29 @@ export async function getBlogPosts () {
             json
           }
           slug
+        }
+      }
+    }
+  `
+  return graphQLClient.request(postsQuery)
+}
+
+export async function getAbout () {
+  const postsQuery = gql`
+    {
+      aboutCollection {
+        items {
+          title
+          thumbnail {
+            url
+            width
+            height
+            title
+            description
+          }
+          content {
+            json
+          }
         }
       }
     }

@@ -4,7 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getFirstLetter } from '@/utils/helper'
 import { styles } from './styles'
 
-export default function Card ({ posts }) {
+export default function BlogPosts ({ posts }) {
   const {
     orderedList,
     cardLink,

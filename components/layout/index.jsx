@@ -3,11 +3,11 @@ import Footer from '@/components/footer/index'
 import { styles } from './styles'
 
 export default function Layout ({ children }) {
-  const { article } = styles
+  const { article, blogPosts } = styles
   return (
     <article className={article}>
       <Header />
-      <section>
+      <section className={blogPosts}>
         {children}
       </section>
       <Footer />

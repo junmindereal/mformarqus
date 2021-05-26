@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Card from '@/components/card/index'
+import BlogPosts from '@/components/blogPosts/index'
 import { getBlogPosts } from '@/utils/queries'
 
 export async function getStaticProps () {
@@ -17,7 +17,7 @@ export default function Home ({ posts }) {
         <title>M For Marqus</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Card posts={posts} />
+      <BlogPosts posts={posts} />
     </>
   )
 }

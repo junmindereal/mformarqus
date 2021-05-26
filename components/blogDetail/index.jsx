@@ -1,7 +1,10 @@
 import Image from 'next/image'
+import tinytime from 'tinytime'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getFirstLetter } from '@/utils/helper'
 import { styles } from './styles'
+
+const publishedDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
 
 export default function BlogDetail ({ post }) {
   const {
@@ -22,7 +25,9 @@ export default function BlogDetail ({ post }) {
     <>
       <article className={article}>
         <section className={content}>
-          <time dateTime='2021-04-14T16:01:00.000Z'>Thursday, April 15, 2021</time>
+          <time dateTime={post.publishedDate} className={time}>
+            {publishedDateTemplate.render(new Date(post.publishedDate))}
+          </time>
           <h1 className={title}>{post.title}</h1>
           <div>{documentToReactComponents(post.content.json)}</div>
         </section>

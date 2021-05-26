@@ -63,7 +63,7 @@ module.exports = {
         },
         dark: {
           css: {
-            color: theme('colors.gray.50'),
+            color: theme('colors.gray.100'),
             h2: {
               color: 'white'
             },

@@ -7,5 +7,8 @@ export const styles = {
     lg:px-6
     lg:pb-6
     lg:max-w-6xl
+  `,
+  blogPosts: `
+    mt-20
   `
 }
