@@ -18,6 +18,7 @@ export const styles = {
     text-gray-500
   `,
   copyrightLink: `
+    w-28
     text-gray-500
     hover:text-gray-900
     dark:text-gray-500
